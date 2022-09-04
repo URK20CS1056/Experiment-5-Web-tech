@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <div class="container-fluid bg-secondary m-5">
+        <form class="form-horizontal">
+            <div class="row justify-content-center align-items-center bg-info pb-1 pt-3 text-white">
+                <h1>
+                    Body Mass Index (BMI)
+                </h1>
+                <p>A measure of body fat in adults</p>
+            </div>
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>
+                            <div class="row mt-4 mb-0">
+                                <div class="col-sm-1 pt-5 start-0 m-0 ">
+                                </div>
+                                <div class="col-sm-6 m-auto ">
+                                    <label for="pwd" class="form-label">Weight</label>
+                                    <input type="email" class="form-control" id="wei" placeholder="NUMBER IN KG"
+                                        onkeyup="bmi()">
+
+                                </div>
+                                <div class="col-sm-1 pt-5 start-0 m-0 =">
+                                    <p>kg</p>
+                                </div>
+                                <div class="col-sm-4 pt-5 start-0 m-0 ">
+                                </div>
+                            </div>
+                            <div class="row mt-0  pt-0 mb-0">
+                                <div class="col-sm-1 pt-5 start-0 m-0 ">
+                                </div>
+                                <div class="col-sm-6 m-auto ">
+                                    <label for="pwd" class="form-label">Height</label>
+                                    <input type="email" class="form-control" id="hei" placeholder="NUMBER IN CM"
+                                        onkeyup="bmi()">
+
+                                </div>
+                                <div class="col-sm-1 pt-5 start-0 m-0 =">
+                                    <p>cm</p>
+                                </div>
+                                <div class="col-sm-4 pt-5 start-0 m-0 ">
+                                </div>
+
+                            </div>
+                            <br>
+                            <br>
+                        </th>
+                        <th class="text-center pt-5 end-100">
+                            <h1 class="font-weight-bold text-center pt-5 text-info " id="result">
+                                answer
+                            </h1>
+                            <p class="font-weight-bold text-center text-info " id="status">
+                                Status</p>
+                        </th>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+
+
+        <script>
+
+
+            function bmi() {
+                var weight = document.getElementById("wei").value;
+                var height = document.getElementById("hei").value;
+
+                var result = weight / ((height / 100) ** 2);
+                result = Math.round((result + Number.EPSILON) * 100) / 100
+
+                document.getElementById('result').innerHTML = result;
+
+                if (result < 18) {
+                    status = "Under Weight BMI";
+                }
+                else if (result > 18 & result < 25) {
+                    status = "Normal BMI";
+                }
+                else if (result > 25 & result < 30) {
+                    status = "Overweight BMI";
+                }
+                else {
+                    status = "Obese";
+                }
+
+                document.getElementById('status').innerHTML = status;
+            }
+
+        </script>
+
+
+    </div>
+</body>
+
+</html>
